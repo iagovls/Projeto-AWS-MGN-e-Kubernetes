@@ -132,7 +132,7 @@ O sistema será distribuido em duas zonas de disponibilidade. Cada zona terá um
 
 ![image](https://github.com/user-attachments/assets/fbe48cd3-0d24-4556-b0ca-398be3d7786c)
 
-Valor total por mês: U$ 276,58
+Valor total por mês: **U$ 276,58**
 
 ---
 
@@ -140,7 +140,7 @@ Valor total por mês: U$ 276,58
 
 ![image](https://github.com/user-attachments/assets/15d060b0-ea60-4244-bed9-66afd7e5cbb1)
 
-Valor total por mês: U$ 195,01
+Valor total por mês: **U$ 195,01**
 
 
 
