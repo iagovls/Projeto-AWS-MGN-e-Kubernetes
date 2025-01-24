@@ -104,13 +104,18 @@ Diagrama
 | <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7L7fI-Ozxh2ni9T2E7rgX_CU-VNMOpoXfwpIxYIaifUcJL_NQ0ZJi8mGHWNRdiFXmres&usqp=CAU" width="50"></img>        | RDS     |      Para gerenciar o novo banco de dados na AWS.       |   
 | <img src="https://cloud-icons.onemodel.app/aws/Architecture-Service-Icons_01312023/Arch_Database/64/Arch_AWS-Database-Migration-Service_64@5x.png" width="50"></img>        | DMS     |    Para migrar o banco de dados do servidor local para o Amazon RDS.         |     
    
-
+---
 ### ``Qual o diagrama da infraestrutura na AWS?``
+---
 ### ``Como serão garantidos os requisitos de Segurança?``
 
 Os dados são **criptografados em transito** com chave de criptografia AES de 256 bits por padrão.
 
+---
 ### ``Como será realizado o processo de Backup?``
+
+---
+
 ### ``Qual o custo da infraestrutura na AWS (AWS Calculator)?``
 
 Durante a migração
