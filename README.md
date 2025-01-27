@@ -140,4 +140,6 @@ Valor total por mês: **U$ 276,58**
 
 Valor total por mês: **U$ 195,01**
 
+---
+
 ## Etapa 2 - Modernização/ Kubernetes
