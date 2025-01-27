@@ -59,7 +59,7 @@ Porém antes da migração acontecer para a nova estrutura, precisamos fazer uma
 
 <div align="center">
 
-![Arquitetura AWS MGN drawio](https://github.com/user-attachments/assets/98df3074-4902-4331-87b8-8ffcab33c9b0)
+![diagrama MGN drawio (1)](https://github.com/user-attachments/assets/a098cb0f-3724-43ea-83b3-0ab30e94fb4f)
 
 Diagrama
 
@@ -69,7 +69,7 @@ Diagrama
 2. Os **Servidores locais** e os **servidores de replicação do AWS MGN** que são executados na sub-rede da área de preparação devem se comunicar continuamente com os **endpoints do AWS MGN na porta 443** para fins de autenticação, configuração e monitoramento. 
 3. Quando o servidor de replicação ou de conversão é inicializado, ele se conecta a um **bucket do S3 para baixar software e arquivos de configuração**.
 4. O AWS MGN usa, como padrão, **computação da EC2 do tipo t3-micro** aumentando ou diminuindo o processamento conforme necessário. 
-5. Conexões entre os servidores locais e os servidores de replicação são criadas por **AWS Direct Connect ou VPN** (conforme preferência). Os dados são **criptografados em transito** com chave de criptografia AES de 256 bits por padrão.
+5. Conexões entre os servidores locais e os servidores de replicação são criadas por **AWS Direct Connect ou VPN** (conforme preferência). Os dados são **criptografados em trânsito** com chave de criptografia AES de 256 bits por padrão.
 6. Armazenamentos da **Elastic Block Store** são criados do mesmo tamanho dos discos do sistema de origem para manter os dados do ambiente de origem **sincronizados na AWS**.
 7. Para a migração do banco de dados, é usado o serviço **AWS Database Migration Service**. E o banco de dados na AWS passa a ser usado pelo **Amazon RDS**.
 8. Uma das funções do servidor de replicação é emitir uma chamada de API para **tirar snapshots dos volumes de preparação do EBS** durante a replicação. Para isso, a conectividade com um endpoint da API do EC2 na porta 443 também deve estar em vigor.
@@ -105,26 +105,42 @@ Diagrama
 | <img src="https://cloud-icons.onemodel.app/aws/Architecture-Service-Icons_01312023/Arch_Database/64/Arch_AWS-Database-Migration-Service_64@5x.png" width="50"></img>        | DMS     |    Para migrar o banco de dados do servidor local para o Amazon RDS.         |     
    
 ---
+
 ### ``Qual o diagrama da infraestrutura na AWS?``
+
+![Sistema pós-migração drawio (2)](https://github.com/user-attachments/assets/41208896-6f92-499f-b856-1f299e9a71a6)
+
+Diagrama após a Migração ⬆️
+
 ---
+
 ### ``Como serão garantidos os requisitos de Segurança?``
 
-Os dados são **criptografados em transito** com chave de criptografia AES de 256 bits por padrão.
+Os dados são **criptografados em trânsito** com chave de criptografia AES de 256 bits por padrão.
 
 ---
+
 ### ``Como será realizado o processo de Backup?``
+
+O sistema será distribuido em duas zonas de disponibilidade. Cada zona terá uma instância anexada com seu volume EBS sincronizado. O Banco de dados terá sua réplica na outra zona de disponibilidade.
 
 ---
 
 ### ``Qual o custo da infraestrutura na AWS (AWS Calculator)?``
 
-Durante a migração
+`Durante a migração` ⬇️ 
+
 ![image](https://github.com/user-attachments/assets/fbe48cd3-0d24-4556-b0ca-398be3d7786c)
 
-Após a Migração
+Valor total por mês: **U$ 276,58**
 
+---
 
+`Após a migração` ⬇️
 
+![image](https://github.com/user-attachments/assets/15d060b0-ea60-4244-bed9-66afd7e5cbb1)
+
+Valor total por mês: **U$ 195,01**
 
 
 
