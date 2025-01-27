@@ -143,3 +143,11 @@ Valor total por mês: **U$ 195,01**
 ---
 
 ## Etapa 2 - Modernização/ Kubernetes
+
+<div align="center">
+
+![diagrama MGN drawio (1)](diagrama-etapa-2.png)
+
+Diagrama
+
+</div>
