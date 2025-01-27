@@ -146,8 +146,8 @@ Valor total por mês: **U$ 195,01**
 
 <div align="center">
 
-![diagrama MGN drawio (1)](diagrama-etapa-2.png)
+![diagrama MGN drawio (1)](Etapa2.jpg)
 
-Diagrama
+**Diagrama do ambiente na AWS após a modernização para Kubernetes**
 
 </div>
