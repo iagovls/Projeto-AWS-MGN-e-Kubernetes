@@ -276,7 +276,7 @@ A arquitetura utiliza dos seguintes itens para garantir a segurança:
 
 `Levantamento com todas as tecnologias utilizadas` ⬇️
 
-![alt text](CalculadoraEtapa2.png)
+![Estimative 2 part](/icons/CalculadoraEtapa2.png)
 
 Valor total por mês: **US$ 1,350.76**
 
