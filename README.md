@@ -144,6 +144,79 @@ Valor total por mês: **U$ 195,01**
 
 ## Etapa 2 - Modernização/ Kubernetes
 
+A empresa Fast Engineering S/A solicitou uma modernização da sua arquitetura AWS, tendo como requisitos, os seguintes tópicos abaixo:
+
+- Ambiente Kubernetes.
+- Banco de dados gerenciado (PaaS e Multi AZ).
+- Backup de dados.
+- Sistema para persistência de objetos (imagens, vídeos etc).
+- Segurança.
+
+Sendo assim, construimos uma proposta de modernização da arquitetura da Fast Engineering. Todas as informações relevantes sobre a arquitetura proposta, estão abaixo, nos seguintes tópicos.
+
+# Informações importantes ⬇️
+
+---
+
+### `Quais atividades são necessárias para a modernização?`
+
+**Requisitos**
+
+- Conta AWS (Para usar a AWS CLI)
+- VSCODE
+- Terraform
+- Docker
+- Conta Github
+- VPC(EKS VPC)
+
+**Atividades importantes para o processo de modernização**
+
+1. Prepare o ambiente:
+
+- O docker será usado para criar as imagens com as aplicações.
+- O GitHub será configurado para armazenar o código Terraform e workflows do Github actions.
+- Os segredos serão adicionados no repositório para armazenar as credencias da AWS (ex: AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY).
+- O Terraform será instalado em uma máquina local para testar e desenvolver os scripts que serão usados.
+- Criação do cluster EKS com Terraform através da criação de arquivos de configuração.
+  Cração do Node Group.
+- Configuração do github actions.
+
+2. Migração dos recursos para o EKS:
+
+- Configuração do kubectl para interagir com o cluster EKS.
+- Criação dos manifestos(deployments e serviços) Kubernetes YAML para implantar aplicativos no cluster.
+- Implantação(apply) dos recursos no cluster EKS.
+- Verificaçãp do estado dos recursos no cluster EKS na zona de Devs.
+- Realização de testes na aplicação e configuração do monitoramento e alertas para o cluster EKS.
+
+3. O time de HML e QA irá prosseguir com os testes antes que a aplicação seja de fato distribuída.
+
+---
+
+### `Quais as ferramentas vão ser utilizadas?`
+
+| Ferramenta                                                                                                                                                                    | Descrição                                                                                                                                                                                                                                                                                                                                     |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <img src="/icons/ecr.png" width="50"></img>                                                                                                                                   | **ECR**: Ele é um serviço AWS usado para armazenar e gerenciar containers, ele serve como um repositório privado de imagens.                                                                                                                                                                                                                  |
+| <img src="/icons/eks.png" width="50"></img>                                                                                                                                   | **EKS**: Computação para replicação dos servidores locais e para testes com servidores migrados. É um serviço que gerencia os clusters, worker nodes kubernetes, master nodes, ele também é responsável pela escalabilidade e backups.                                                                                                        |
+| <img src="/icons/rds.png" width="50"></img>                                                                                                                                   | **RDS for MySQL**: O AWS RDS(Relational Database Service) é um banco de dados.                                                                                                                                                                                                                                                                |
+| <img src="/icons/nat.png" width="50"></img>                                                                                                                                   | **NAT Gateway**: Permite que os serviços dentro das subnetes privadas tenham acesso à internet, mas os serviços continuam inacessíveis para quem não permissão.                                                                                                                                                                               |
+| <img src="/icons/ig.png" width="50"></img>                                                                                                                                    | **Internet Gateway**: Permite que os serviços dentro de uma VPC se comuniquem com a Internet.                                                                                                                                                                                                                                                 |
+| <img src="/icons/alb.png" width="50"></img>                                                                                                                                   | **Application Load Balancer**: Para gerenciar o tráfico, balanceia o tráfico para os Pods/Instâncias.                                                                                                                                                                                                                                         |
+| <img src="https://cloud-icons.onemodel.app/aws/Architecture-Service-Icons_01312023/Arch_Networking-Content-Delivery/64/Arch_Amazon-Route-53_64@5x.png" width="50"></img>      | **Route 53**: Gerenciamento de DNS para domínios e zonas hospedadas, durante a criação do Route 53, em hosted zones, ele possui uma lista de registros DNS, e checa se o domínio solicitado(quando o usuário entra na aplicação web) combina com o IP do load balancer, se sim, a solicitação segue e o usuário consegue acessar a aplicação. |
+| <img src="https://cloud-icons.onemodel.app/aws/Architecture-Service-Icons_01312023/Arch_Networking-Content-Delivery/64/Arch_Amazon-CloudFront_64@5x.png" width="50"></img>    | **CloudFront**: CDN para entrega de conteúdo com baixa latência, ele é um Content Deliver Service e é usado para entregar conteúdos como imagens, vídeos ou dados estáticos ou dinâmicos ao redor do mundo.                                                                                                                                   |
+| <img src="https://cloud-icons.onemodel.app/aws/Architecture-Service-Icons_01312023/Arch_Security-Identity-Compliance/64/Arch_AWS-WAF_64@5x.png" width="50"></img>             | **WAF**: Firewall para proteger aplicativos web contra ataques comuns.                                                                                                                                                                                                                                                                        |
+| <img src="/icons/cloudwatch.png" width="50"></img>                                                                                                                            | **CloudWatch**: Monitoramento e coleta de métricas em tempo real.                                                                                                                                                                                                                                                                             |
+| <img src="https://cloud-icons.onemodel.app/aws/Architecture-Service-Icons_01312023/Arch_Security-Identity-Compliance/64/Arch_AWS-Secrets-Manager_64@5x.png" width="50"></img> | **Secrets Manager**: Gerenciamento seguro de credenciais e segredos, as variáveis de ambiente.                                                                                                                                                                                                                                                |
+| <img src="/icons/iam.png" width="50"></img>                                                                                                                                   | **IAM**: Gerenciamento de permissões e acesso seguro a recursos da AWS.                                                                                                                                                                                                                                                                       |
+| <img src="/icons/budget.png" width="50"></img>                                                                                                                                | **Budgets**: Controle de orçamento e alertas de custos.                                                                                                                                                                                                                                                                                       |
+| <img src="https://cdn.worldvectorlogo.com/logos/amazon-s3-simple-storage-service.svg" width="50"></img>                                                                       | **S3 Bucket**: Armazenamento escalável para dados e relatórios.                                                                                                                                                                                                                                                                               |
+| <img src="/icons/sns.png" width="50"></img>                                                                                                                                   | **AWS SNS**: Simple Notification Service é um serviço de mensagens para notificações em tempo real.                                                                                                                                                                                                                                           |
+
+---
+
+### `Qual o diagrama da infraestrutura na AWS?`
+
 <div align="center">
 
 ![diagrama MGN drawio (1)](Etapa2.jpg)
@@ -151,3 +224,33 @@ Valor total por mês: **U$ 195,01**
 **Diagrama do ambiente na AWS após a modernização para Kubernetes**
 
 </div>
+
+##### Descrição
+
+---
+
+### `Como serão garantidos os requisitos de Segurança?`
+
+---
+
+### `Como será realizado o processo de Backup?`
+
+---
+
+### `Qual o custo da infraestrutura na AWS (AWS Calculator) mensalmente?`
+
+`Levantamento com todas as tecnologias utilizadas` ⬇️
+
+![alt text](CalculadoraEtapa2.png)
+
+Valor total por mês: **U$ 3,821.87**
+
+[Link levantamento](https://calculator.aws/#/estimate?id=b40b2c23586cedadf4a3ecc92bdc84463720ebae)
+
+---
+
+## Conclusão
+
+Portanto, assim como solicitado pela empresa Fast Egineering S/A, conseguimos desenvolver as duas arquiteturas e o levantamento mensal de seus custos.
+
+Muito obrigada!
