@@ -4,7 +4,7 @@
 
 ![diagrama 1](/icons/gitAWS.drawio.png)
 
-**Workflow pipeline**
+**Workflow pipeline GitHub**
 
 </div>
 
@@ -16,6 +16,15 @@
 
 ![diagrama 2](/icons/workflow.png)
 
-**Workflow pipeline**
+**Workflow pipeline GitHub AWS**
 
 </div>
+
+- Quando os desenvolvedores fizerem o merge e acionarem o github actions, o repositório será clonado.
+- Para que o Terraform seja executado dentro da AWS, é necessário configurar as linhas de comando(CLIs) da AWS e Terraform.
+- Após a configuração das linhas de comando, é necessário fazer uma conexão entre o GitHub Actions e a conta AWS, e para isso é feita uma configuração via Assume Role(forma segura de configurar a pipeline, para que a conexão com a nossa conta AWS não precise de credenciais fixas).
+- Neste ponto, a pipeline adquire um Lock de Execução para não permitir problemas de execução paralelos.
+- Executa-se o Terraform Plan & Apply.
+- Por fim, armazena-se ou atualiza-se o StateFile dentro de um S3 Bucket.
+
+Finaliza-se assim, o workflow do processo de Deply da Infra Terraform dentro da AWS.
