@@ -227,6 +227,11 @@ Sendo assim, construimos uma proposta de modernização da arquitetura da Fast E
 
 ##### Descrição
 
+Descrição da aqrquitetura apresentada acima, siga os links para mais informações.
+
+1. Primeiramente os **Devs**(Desenvolvedores/developers) através de uma [pipeline Terraform integrada com o GitHub actions e a AWS](pipelineWorkflow.md), faz o deploy da infra Terraform para a AWS, e as imagens dos containers são armazenadas dentro do **ECR**(Elastic Container Repository).
+2.
+
 ---
 
 ### `Como serão garantidos os requisitos de Segurança?`
