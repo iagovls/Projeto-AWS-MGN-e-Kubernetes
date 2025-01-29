@@ -171,7 +171,7 @@ Sendo assim, construimos uma proposta de modernização da arquitetura da Fast E
 
 **Atividades importantes para o processo de modernização**
 
-1. Prepare o ambiente:
+1. Preparação do ambiente:
 
 - O docker será usado para criar as imagens com as aplicações.
 - O GitHub será configurado para armazenar o código Terraform e workflows do Github actions.
