@@ -193,7 +193,7 @@ Sendo assim, construimos uma proposta de modernização da arquitetura da Fast E
 
 ---
 
-### `Quais ferramentas vão ser utilizadas?`
+### `Quais ferramentas serão utilizadas?`
 
 | Ferramenta                                                                                                                                                                    | Descrição                                                                                                                                                                                                                                                                                                                                     |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -219,7 +219,7 @@ Sendo assim, construimos uma proposta de modernização da arquitetura da Fast E
 
 <div align="center">
 
-![diagrama MGN drawio (1)](Etapa2.jpg)
+![diagrama etapa 2](Etapa2.png)
 
 **Diagrama do ambiente na AWS após a modernização para Kubernetes**
 
