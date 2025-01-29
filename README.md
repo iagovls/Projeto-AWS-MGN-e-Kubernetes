@@ -232,6 +232,25 @@ Descrição da aqrquitetura apresentada acima, siga os links para mais informaç
 1. Primeiramente os **Devs**(Desenvolvedores/developers) através de uma [pipeline Terraform integrada com o GitHub actions e a AWS](pipelineWorkflow.md), faz o deploy da infra Terraform para a AWS, e as imagens dos containers são armazenadas dentro do **ECR**(Elastic Container Repository).
 2. Através da execução do GitHub Actions e Terraform, a Infra é criada dentro da AWS.
 3. São criadas três zonas de disponibilidade(az), US-EAST-1A, US-EAST-1B e US-EAST-1C. ([Descrição componentes em cada zona](AZs.md))
+4. O **Internet Gateway** vai permitir a comunicação entre a Infra e a Internet. É através dele que o Application Load Balancer(ALB) vai receber o trafégo externo da internet. Ele vai permitir que o Application Load Balancer receba trafégo externo, ou seja, requisições, além de também permitir que o Nat Gateway forneça acesso à internet para recursos nas subnetes privadas.
+5. Os Clientes acessam a aplicação via https://example.com, e a requisição passa pelo [AWS WAF, CloudFront CDN e o Route 53](trafego.md) antes de chegar no ALB.
+6. O ALB vai servir como balanceador de carga, ele vai controlar o tráfego, controlar para onde as requisições serão envidas, exemplo, o pod da aplicação da us-east-1b ou o pod da 1c.
+
+Fora da região, temos alguns outros componentes não citados ainda, os da parte inferior e da parte lateral esquerda.
+
+7. **AWS CloudWatch & AWS Secrets Manager & IAM**: contribuem para a camada de monitoramento e segurança.
+
+- O **AWS CloudWatch** monitora logs e métricas da infraestrutura.
+- O **AWS Secrets Manager** armazena credenciais sensíveis, como senhas de bancos de dados, variáveis de ambiente e chaves de API.
+- O **IAM(Identity and Access Management)** controla permissões e acessos.
+
+9. **AWS Budgets & S3 Bucket & AWS SNS & Outlook**: Fazem a parte de Custos.
+
+- O **AWS Budgets** monitora os custos da Infra.
+- O **AWS S3 Bucket** salva os relatórios de custos, também armazena logs e backups.
+- O **AWS SNS(Simple Notification Service)** envia alertas por **Outlook** em caso de eventos críticos.
+
+E é dessa forma que os componentas da Infra se comunicam e trabalham.
 
 ---
 

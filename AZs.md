@@ -21,7 +21,7 @@ Expliacação dos componentes das zonas:
 - A zona de disponibilidade us-east-1a, é utilizada como ambiente para os Devs e HML(Homologação) /QA.
 - Nessa zona têm-se três subnetes:
 
-1. **Public subnet**: Conectada a um Nat Gateway, permitindo assim que as subnetes privadas tenham acesso à internet.
+1. **Public subnet**: Conectada a um Nat Gateway, permitindo assim que as subnetes privadas tenham acesso à internet e consequentemente possam acessar serviços externos como APIs, atualizações e integrações. Ele vai utilizar o Internet Gateway para rotear o trafégo de saída dos pods para a internet.
 
 > [!important]
 > A utilização de subnetes privadas para isolar as aplicações, adiciona uma camada de segurança, pois os componentes dentro da mesma, não podem ser acessados externamente a não ser que seja permitido através da configuração dos SG e Internet Gateway.
