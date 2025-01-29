@@ -231,7 +231,7 @@ Descrição da aqrquitetura apresentada acima, siga os links para mais informaç
 
 1. Primeiramente os **Devs**(Desenvolvedores/developers) através de uma [pipeline Terraform integrada com o GitHub actions e a AWS](pipelineWorkflow.md), faz o deploy da infra Terraform para a AWS, e as imagens dos containers são armazenadas dentro do **ECR**(Elastic Container Repository).
 2. Através da execução do GitHub Actions e Terraform, a Infra é criada dentro da AWS.
-3. São criadas três zonas de disponibilidade(az), US-EAST-1A, US-EAST-1B e US-EAST-1C. ([Descrição componentes em cada zona]())
+3. São criadas três zonas de disponibilidade(az), US-EAST-1A, US-EAST-1B e US-EAST-1C. ([Descrição componentes em cada zona](AZs.md))
 
 ---
 
