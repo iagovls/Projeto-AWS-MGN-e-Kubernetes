@@ -21,6 +21,13 @@
 
 </div>
 
+- O diagrama acima representa o uso do CDN, ele apresenta três cenários.
+  Usuário nos EUA carregando uma foto
+
+1. User in US(usuário nos estados unidos) faz o upload de uma foto para o Instagram, a foto é armazenada em um servidor localizado na Austrália.
+2. User in India acessando a foto sem CDN: O usuário na Índia tenta acessar a foto. A requisição percorre múltiplos roteadores até chegar ao servidor na Austrália. Esse processo pode causar latência, tornando o carregamento da foto mais lento.
+3. Usuário na Índia acessando a foto com CDN: A foto é armazenada em um servidor de borda (edge) da CDN mais próximo do usuário na Índia. Quando o usuário acessa a foto, ela é carregada do servidor local, reduzindo a latência e melhorando a velocidade.
+
 - O CloudFront é um CDN que acelera a entrega do seu site ou API distribuindo o conteúdo em servidores ao redor do mundo(os servidores edge). Ele melhora a velocidade, segurança e confiabilidade do trafégo.
 
 - O CloudFront vai receber a requisição e passar para o WAF.
