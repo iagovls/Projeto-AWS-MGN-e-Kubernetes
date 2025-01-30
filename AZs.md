@@ -27,7 +27,9 @@ Expliacação dos componentes das zonas:
 > A utilização de subnetes privadas para isolar as aplicações, adiciona uma camada de segurança, pois os componentes dentro da mesma, não podem ser acessados externamente a não ser que seja permitido através da configuração dos SG e Internet Gateway.
 
 2. **Private Subnet 1**: Nela se encontram os dois ambientes, Dev e HML /QA, os quais não são expostos para clientes e são usados apenas para as etapas de desenvolvimento e testes.
-   2.1 Dentro de cada um dos ambientes, há dois grupos de segurança(security groups-sg):
+
+> [!important]
+> Dentro de cada um dos ambientes, há dois grupos de segurança(security groups-sg):
 
 - **sg-1**: Permite acesso para a aplicação, possui um Pod com a aplicação React, o Frontend.
 - **sg-2**: Permite acesso apenas para a aplicação Frontend, para que consiga ter acesso as APIs, na arquitetura original, tinha-se uma instância para todas as APIs, entretanto, quando entramos nos conceitos de Kubernetes e microserviços, cada Pod der ter apenas uma função, então como haviam 3 APIs, foram criados 3 Pods, um para cada API.
