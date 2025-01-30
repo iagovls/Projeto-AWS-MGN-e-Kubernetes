@@ -278,7 +278,7 @@ A arquitetura utiliza dos seguintes itens para garantir a segurança:
 
 ![Estimative 2 part](/icons/CalculadoraEtapa2.png)
 
-Valor total por mês: **US$ 1,350.76**
+Valor total por mês: **US$ 1,350.76 ou 6.753,80BRL**
 
 ⬇️[Link levantamento](https://calculator.aws/#/estimate?id=42ea4e6544f2f88c72fa35313b5fd34d467b53d6)
 ⬇️[Detalhes do levantamento](detalhes-levantamento-etapa2.md)
