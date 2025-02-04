@@ -207,7 +207,10 @@ Sendo assim, construimos uma proposta de modernização da arquitetura da Fast E
 | <img src="https://cloud-icons.onemodel.app/aws/Architecture-Service-Icons_01312023/Arch_Networking-Content-Delivery/64/Arch_Amazon-CloudFront_64@5x.png" width="50"></img>    | **CloudFront**: CDN para entrega de conteúdo com baixa latência, ele é um Content Delivery Service e é usado para entregar conteúdos como imagens, vídeos ou dados estáticos ou dinâmicos ao redor do mundo.                                                                                                                                  |
 | <img src="https://cloud-icons.onemodel.app/aws/Architecture-Service-Icons_01312023/Arch_Security-Identity-Compliance/64/Arch_AWS-WAF_64@5x.png" width="50"></img>             | **WAF**: Firewall para proteger aplicativos web contra ataques comuns.                                                                                                                                                                                                                                                                        |
 | <img src="/icons/cloudwatch.png" width="50"></img>                                                                                                                            | **CloudWatch**: Monitoramento e coleta de métricas em tempo real.                                                                                                                                                                                                                                                                             |
+| <img src="/icons/org.png" width="50"></img>                                                                                                                                   | **Organization**: Cuida de todas as contas AWS, no nosso caso as contas de Dev, HML/QA e Prod.                                                                                                                                                                                                                                                |
+| <img src="/icons/cloudwatch.png" width="50"></img>                                                                                                                            | **CloudWatch**: Monitoramento e coleta de métricas em tempo real.                                                                                                                                                                                                                                                                             |
 | <img src="https://cloud-icons.onemodel.app/aws/Architecture-Service-Icons_01312023/Arch_Security-Identity-Compliance/64/Arch_AWS-Secrets-Manager_64@5x.png" width="50"></img> | **Secrets Manager**: Gerenciamento seguro de credenciais e segredos, as variáveis de ambiente.                                                                                                                                                                                                                                                |
+| <img src="/icons/backup.png" width="50"></img>                                                                                                                                | **Backup**: Provê backups centralizados.                                                                                                                                                                                                                                                                                                      |
 | <img src="/icons/iam.png" width="50"></img>                                                                                                                                   | **IAM**: Gerenciamento de permissões e acesso seguro a recursos da AWS.                                                                                                                                                                                                                                                                       |
 | <img src="/icons/budget.png" width="50"></img>                                                                                                                                | **Budgets**: Controle de orçamento e alertas de custos.                                                                                                                                                                                                                                                                                       |
 | <img src="https://cdn.worldvectorlogo.com/logos/amazon-s3-simple-storage-service.svg" width="50"></img>                                                                       | **S3 Bucket**: Armazenamento escalável para dados e relatórios.                                                                                                                                                                                                                                                                               |
@@ -219,7 +222,7 @@ Sendo assim, construimos uma proposta de modernização da arquitetura da Fast E
 
 <div align="center">
 
-![diagrama etapa 2](Etapa2.png)
+![diagrama etapa 2](icons/etapa2-updated.jpg)
 
 **Diagrama do ambiente na AWS após a modernização para Kubernetes**
 
@@ -238,10 +241,12 @@ Descrição da aqrquitetura apresentada acima, siga os links para mais informaç
 
 Fora da região, temos alguns outros componentes não citados ainda, os da parte inferior e da parte lateral esquerda.
 
-7. **AWS CloudWatch & AWS Secrets Manager & IAM**: contribuem para a camada de monitoramento e segurança.
+7. **AWS Backup**: Faz a parte de backup da Infra, é uma ferramenta que provém um backup centralizado.
+8. **AWS CloudWatch & AWS Secrets Manager & AWS Organization & IAM**: contribuem para a camada de monitoramento e segurança.
 
 - O **AWS CloudWatch** monitora logs e métricas da infraestrutura.
 - O **AWS Secrets Manager** armazena credenciais sensíveis, como senhas de bancos de dados, variáveis de ambiente e chaves de API.
+- **AWS Organization**: Cuida das contas de quem têm acesso à infra, e junto ao IAM, ele faz o controle de acesso e permissões.
 - O **IAM(Identity and Access Management)** controla permissões e acessos.
 
 9. **AWS Budgets & S3 Bucket & AWS SNS & Outlook**: Fazem a parte de Custos.
