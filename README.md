@@ -265,6 +265,7 @@ A arquitetura utiliza dos seguintes itens para garantir a segurança:
 
 - **Subnetes Privadas**: Limitando o acesso indevido, criando assim uma zona restrita.
 - **AWS Secrets Manager**: A centralização das variáveis de ambientes ou credenciais reduz o risco de vazamentos ou uso indevido, além de fazer rotação automática de segredos como senhas de bancos de dados, chaves de API e tokens de acesso seguindo.
+- **AWS Organization**: A criação de contas específicas para os devs e pessoal que trabalhará na infra, junto ao controle de acesso e permissões do IAM, adiciona uma camada a mais de segurança, ao criar ambientes isolados, e portanto não afetam o ambiente de produção.
 - **IAM roles/policies**: Utilização de lista de permissões para grupos de usuários e controle de acesso a segredos, limitando o acesso indevido ao ambiente.
 - **AWS WAF**: Através da utilização do WAF, Firewall, para criar regras para bloquear padrões de tráfego malicioso como Injeção de SQL, Cross-Site Scripting, Força Bruta ou até mesmo Bots Maliciosos. O WAF também envia métricas para o CloudWatch, permitindo o monitoramento do tráfego e assim ajudando na identificação de padrões de ataques.
 - **AWS CloudFront**: Integrado ao WAF, ele protege aplicações distribuídas globalmente.
@@ -274,6 +275,8 @@ A arquitetura utiliza dos seguintes itens para garantir a segurança:
 
 ### `Como será realizado o processo de Backup?`
 
+- **AWS Backup**: O AWS Backup será utilizado para fazer o Backup centralizado.
+- **S3 Bucket**: O S3 Bucket será usado para fazer o backup da aplicação estática.
 - **Terraform**: Como o Terraform faz esse processo de automatização da montagem do cluster EKS, em caso de qualquer perda do ambiente, ele fará esse processo de reconstrução do cluster.
 - **RDS**: O RDS sendo configurado de forma MULTI-AZ, garante uma alta disponibilidade, além de fornecer backups automáticos e snapshots manuais.
 
